@@ -33,7 +33,7 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      NEXT_PUBLIC_API_URL: http://api.bime123.com
+      NEXT_PUBLIC_API_URL: https://api.bime123.com
     depends_on:
       - api
     ports:
