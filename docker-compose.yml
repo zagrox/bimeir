@@ -8,8 +8,6 @@ services:
       POSTGRES_DB: hemayatgar_insurance
     volumes:
       - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
   api:
     build:
@@ -21,8 +19,6 @@ services:
       DATABASE_URL: postgresql://hemayatgar:hemayatgar_secret@postgres:5432/hemayatgar_insurance
     depends_on:
       - postgres
-    ports:
-      - "4000:4000"
     volumes:
       - uploads_data:/app/apps/api/uploads
 
@@ -36,8 +32,6 @@ services:
       NEXT_PUBLIC_API_URL: https://api.bime123.com
     depends_on:
       - api
-    ports:
-      - "3000:3000"
 
 volumes:
   postgres_data:
