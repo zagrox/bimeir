@@ -3,9 +3,9 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: hemayatgar
-      POSTGRES_PASSWORD: hemayatgar_secret
-      POSTGRES_DB: hemayatgar_insurance
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -14,9 +14,8 @@ services:
       context: .
       dockerfile: apps/api/Dockerfile
     restart: unless-stopped
-    env_file: .env
     environment:
-      DATABASE_URL: postgresql://hemayatgar:hemayatgar_secret@postgres:5432/hemayatgar_insurance
+      DATABASE_URL: ${DATABASE_URL}
     depends_on:
       - postgres
     volumes:
@@ -27,9 +26,8 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
     restart: unless-stopped
-    env_file: .env
     environment:
-      NEXT_PUBLIC_API_URL: https://api.bime123.com
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL}
     depends_on:
       - api
 
