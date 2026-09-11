@@ -25,6 +25,14 @@
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": ["prettier --write"]
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "unrs-resolver",
+      "@prisma/client",
+      "@prisma/engines",
+      "prisma"
+    ]
+  },
   "packageManager": "pnpm@11.19.0",
   "engines": {
     "node": ">=24.20.0"
